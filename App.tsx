@@ -1,28 +1,46 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import MainTabs from './src/components/tab';
+import Login from './src/screens/login';
+import Register from './src/screens/register';
+import Detail from './src/screens/detailScreen';
+import { MovieProvider } from './src/constants/movieContext';
+import { StackParamsList } from './src/utils/types';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+const Stack = createNativeStackNavigator<StackParamsList>();
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
+    <MovieProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Main">
+          <Stack.Screen
+            name="Main"
+            component={MainTabs}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={Register}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Details"
+            component={Detail}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </MovieProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;

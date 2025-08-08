@@ -6,12 +6,13 @@ import {
   FlatList,
   Text,
 } from 'react-native';
-import { SearchBar } from 'react-native-elements';
+import { Icon, SearchBar } from 'react-native-elements';
 import { useMovies } from '../constants/movieContext';
 import { Movie } from '../services/datainterface';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackParamsList } from '../utils/types';
+import Ionicons from '@react-native-vector-icons/ionicons';
 
 type NavigationProp = NativeStackNavigationProp<StackParamsList, 'Main'>;
 
@@ -23,7 +24,7 @@ function Discovery() {
     setFilteredMovies(movies);
   }, [movies]);
   useEffect(() => {
-    const lowerSearch = search.toLowerCase();
+    const lowerSearch = typeof search === 'string' ? search.toLowerCase() : '';
     const filtered = movies.filter(movie =>
       movie.title.toLowerCase().includes(lowerSearch)
     );
@@ -35,6 +36,17 @@ function Discovery() {
       <SearchBar
         containerStyle={styles.searchBar}
         placeholder="Ara..."
+        searchIcon={
+          <Ionicons name="search-outline" size={20} color={'white'} />
+        }
+        clearIcon={
+          <Ionicons
+            onPress={() => setSearch('')}
+            name="remove-circle-outline"
+            size={20}
+            color={'white'}
+          />
+        }
         onChange={setSearch} // <-- bu satır değişti
         value={search}
         containerStyle={styles.sbContainerSty}
@@ -58,12 +70,9 @@ function Discovery() {
               </View>
             </TouchableOpacity>
           )}
-          ListEmptyComponent={() => {
-            <View style={styles.container}>
-              <Text>Sonuç bulunamadı</Text>
-            </View>;
-          }}
         />
+
+        {}
       </View>
     </View>
   );

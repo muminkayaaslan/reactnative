@@ -2,19 +2,20 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MainTabs from './src/components/tab';
-import Login from './src/screens/login';
+import Login from './src/screens/Login';
 import Register from './src/screens/register';
 import Detail from './src/screens/detailScreen';
 import { MovieProvider } from './src/constants/movieContext';
 import { StackParamsList } from './src/utils/types';
-
+import { AppProvider } from '@realm/react';
+import { APP_ID } from './src/services/authService';
 const Stack = createNativeStackNavigator<StackParamsList>();
 
 function App() {
   return (
     <MovieProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Main">
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen
             name="Main"
             component={MainTabs}

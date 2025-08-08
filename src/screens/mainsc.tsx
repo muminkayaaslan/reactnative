@@ -4,20 +4,19 @@ import {
   StyleSheet,
   Text,
   Image,
-  Dimensions,
   TouchableOpacity,
   ActivityIndicator,
   Platform,
 } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import { Movie } from '../services/datainterface';
 import PagerView from 'react-native-pager-view';
 import Icon from '@react-native-vector-icons/ionicons';
 import { useNavigation } from '@react-navigation/native';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useMovies } from '../constants/movieContext';
 import { StackParamsList } from '../utils/types';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+type NavigationProp = NativeStackNavigationProp<StackParamsList, 'Main'>;
 function Home() {
   const navigation = useNavigation<StackParamsList>();
   const { movies, loading, error } = useMovies();

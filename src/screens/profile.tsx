@@ -1,11 +1,17 @@
 import Ionicons from '@react-native-vector-icons/ionicons';
 import React, { useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, TouchableHighlight } from 'react-native';
 import { ProfileDrawer } from '../components/ProfileDrawer';
 
 function Profile() {
   return (
     <View style={styles.screen}>
+      <View style={styles.header}>
+        <TouchableHighlight style={styles.menuBtn} onPress={() => {}}>
+          <Ionicons name={'menu-outline'} size={30} color={'white'} />
+        </TouchableHighlight>
+      </View>
+
       <View style={styles.container}>
         <View style={styles.profileView}>
           <Ionicons name={'person-outline'} color={'white'} size={100} />
@@ -21,8 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#192FD4',
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-end',
   },
   container: {
     flex: 1,
@@ -45,6 +50,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     marginVertical: 5,
+  },
+  menuBtn: {
+    margin: 17,
+  },
+  header: {
+    backgroundColor: 'rgb(10, 13, 99)',
+    width: '100%',
+    alignItems: 'flex-end',
+    borderRadius: 0,
   },
 });
 

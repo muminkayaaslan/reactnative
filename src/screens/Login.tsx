@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { BlurView } from '@react-native-community/blur';
 import {
   View,
   Pressable,
@@ -8,6 +7,7 @@ import {
   TextInput,
   StyleSheet,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import Toast from 'react-native-simple-toast';
 import { useNavigation } from '@react-navigation/native';
@@ -51,7 +51,7 @@ export function Login() {
   return (
     <ImageBackground
       style={styles.screen}
-      source={require('../../assets/images/realbg.jpg')}
+      source={require('../../assets/images/background.jpg')}
       resizeMode="cover"
     >
       <View style={styles.head}>
@@ -71,13 +71,6 @@ export function Login() {
           }}
         >
           <View style={styles.inputContainer}>
-            <BlurView
-              style={styles.textInputBlur}
-              blurType="dark" // Daha az karartma için 'light' kullanıyoruz
-              blurAmount={10}
-              overlayColor="rgba(0, 0, 0, 0.1)" // Hafif şeffaf beyaz katman
-              reducedTransparencyFallbackColor="black"
-            />
             <TextInput
               textAlign="center"
               cursorColor="red"
@@ -91,13 +84,6 @@ export function Login() {
           </View>
 
           <View style={styles.inputContainer}>
-            <BlurView
-              style={styles.textInputBlur}
-              blurType="dark" // Daha az karartma için 'light' kullanıyoruz
-              blurAmount={10}
-              overlayColor="rgba(0, 0, 0, 0.1)" // Hafif şeffaf beyaz katman
-              reducedTransparencyFallbackColor="black"
-            />
             <TextInput
               textAlign="center"
               cursorColor="red"
@@ -109,21 +95,9 @@ export function Login() {
               secureTextEntry
             />
           </View>
-          <Pressable
-            style={({ pressed }) => [styles.button, pressed && styles.pressed]}
-            onPress={handleLogin}
-          >
+          <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.text}>LogIn</Text>
-          </Pressable>
-        </View>
-        <View>
-          <Pressable
-            onPress={() => {
-              navigation.navigate('Register');
-            }}
-          >
-            <Text>Register{'>'}</Text>
-          </Pressable>
+          </TouchableOpacity>
         </View>
       </View>
     </ImageBackground>
@@ -147,10 +121,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     position: 'relative',
   },
-  textInputBlur: {
-    ...StyleSheet.absoluteFillObject,
-    borderRadius: 8,
-  },
   textInput: {
     borderColor: '#ff66b2',
     borderRadius: 8,
@@ -159,7 +129,7 @@ const styles = StyleSheet.create({
     padding: 10,
     color: 'white',
     textAlign: 'center',
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(128,128,128,0.2)',
     zIndex: 1,
   },
   button: {
@@ -173,15 +143,10 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    color: '#39ff14', // Neon yeşili
+    color: '#b514ffff', // Neon yeşili
     fontWeight: 'bold',
-    textShadowColor: '#39ff14',
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 20,
-  },
-  pressed: {
-    opacity: 0.6,
-    backgroundColor: 'rgba(255,255,255,0.4)',
   },
   logo: {
     width: 150,

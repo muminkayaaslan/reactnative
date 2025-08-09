@@ -1,32 +1,23 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MainTabs from './src/components/tab';
 import Login from './src/screens/Login';
 import Register from './src/screens/register';
 import Detail from './src/screens/detailScreen';
 import { MovieProvider } from './src/constants/movieContext';
-import { StackParamsList } from './src/utils/types';
-import SplashScreen from './src/screens/splash';
-const Stack = createNativeStackNavigator<StackParamsList>();
+import { Stack } from './App';
 
-function App() {
+export function App() {
   return (
     <MovieProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Splash"
+          initialRouteName="Login"
           screenOptions={{
-            animation: 'fade',
+            animation: 'slide_from_right',
           }}
         >
-          <Stack.Screen
-            name="Splash"
-            component={SplashScreen}
-            options={{
-              headerShown: false,
-            }}
-          />
+          <Stack.Screen></Stack.Screen>
           <Stack.Screen
             name="Main"
             component={MainTabs}
@@ -44,7 +35,7 @@ function App() {
             component={Register}
             options={{
               headerShown: false,
-              animation: 'simple_push',
+              animation: 'fade',
             }}
           />
           <Stack.Screen
@@ -57,5 +48,3 @@ function App() {
     </MovieProvider>
   );
 }
-
-export default App;

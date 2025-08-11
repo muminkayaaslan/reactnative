@@ -8,18 +8,14 @@ import Detail from './src/screens/detailScreen';
 import { MovieProvider } from './src/constants/movieContext';
 import { StackParamsList } from './src/utils/types';
 import SplashScreen from './src/screens/splash';
+import { AppProvider, UserProvider } from '@realm/react';
 const Stack = createNativeStackNavigator<StackParamsList>();
 
 function App() {
   return (
     <MovieProvider>
       <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Splash"
-          screenOptions={{
-            animation: 'fade',
-          }}
-        >
+        <Stack.Navigator initialRouteName="Main">
           <Stack.Screen
             name="Splash"
             component={SplashScreen}
@@ -37,14 +33,14 @@ function App() {
           <Stack.Screen
             name="Login"
             component={Login}
-            options={{ headerShown: false }}
+            options={{ headerShown: false, animation: 'slide_from_bottom' }}
           />
           <Stack.Screen
             name="Register"
             component={Register}
             options={{
               headerShown: false,
-              animation: 'simple_push',
+              animation: 'slide_from_bottom',
             }}
           />
           <Stack.Screen

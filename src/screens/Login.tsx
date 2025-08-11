@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 150,
     height: 150,
-    borderRadius: 75,
+    borderRadius: 30,
   },
   head: {
     flex: 0.3,

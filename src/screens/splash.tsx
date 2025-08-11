@@ -21,7 +21,7 @@ export function SplashScreen() {
       colors={['#8c52ff', 'rgb(10, 13, 99)']}
       style={styles.screen}
     >
-      <StatusBar barStyle="light-content" backgroundColor="#1A2980" />
+      <StatusBar barStyle="dark-content" backgroundColor="#1A2980" />
 
       {/* Logo */}
       <Animatable.Image
@@ -34,7 +34,7 @@ export function SplashScreen() {
 
       {/* Başlık */}
       <Animatable.Text animation="fadeInDown" delay={500} style={styles.title}>
-        Welcome to Fantasia
+        Welcome to Rhtym
       </Animatable.Text>
 
       {/* Alt açıklama */}
@@ -54,8 +54,10 @@ export function SplashScreen() {
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
         </Animatable.View>
-
-        <Animatable.View animation="fadeInRight" delay={1200}>
+        <Animatable.View animation="fadeInUp">
+          <Text style={styles.askTitle}>Don't You Have An Account</Text>
+        </Animatable.View>
+        <Animatable.View animation="fadeInLeft" delay={1200}>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('Register');
@@ -100,22 +102,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   buttonContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     gap: 15,
   },
   loginButton: {
-    backgroundColor: '#ffffff20',
+    backgroundColor: 'transparent',
     paddingVertical: 12,
     paddingHorizontal: 30,
-    borderRadius: 30,
+    borderRadius: 15,
     borderWidth: 1,
     borderColor: '#fff',
+    alignItems: 'center',
   },
   registerButton: {
     backgroundColor: '#fff',
     paddingVertical: 12,
     paddingHorizontal: 30,
-    borderRadius: 30,
+    borderRadius: 15,
+    alignItems: 'center',
   },
   buttonText: {
     fontSize: 16,
@@ -126,5 +130,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: '#1A2980',
+  },
+  askTitle: {
+    fontSize: 16,
+    color: '#f1f1f1',
+    textAlign: 'center',
   },
 });

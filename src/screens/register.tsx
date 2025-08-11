@@ -11,6 +11,10 @@ import {
 
 function Register() {
   console.log('register geldi');
+  function alert(arg0: string) {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <ImageBackground
       style={styles.screen}
@@ -51,8 +55,6 @@ function Register() {
       </View>
     </ImageBackground>
   );
-  {
-  }
 }
 
 const styles = StyleSheet.create({
@@ -78,7 +80,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: 'rgba(128,128,128,0.2)',
     marginVertical: 5,
-    maxWidth: '80%',
+    maxWidth: '50%',
     alignItems: 'center',
   },
   regButton: {

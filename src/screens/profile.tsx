@@ -1,7 +1,6 @@
 import Ionicons from '@react-native-vector-icons/ionicons';
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, TouchableHighlight } from 'react-native';
-import { ProfileDrawer } from '../components/ProfileDrawer';
 
 function Profile() {
   return (

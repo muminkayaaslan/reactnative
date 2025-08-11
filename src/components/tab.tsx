@@ -5,14 +5,13 @@ import Home from '../screens/mainsc';
 import Discovery from '../screens/discovery';
 import Profile from '../screens/profile';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { ProfileDrawer } from './ProfileDrawer';
 
 const Tab = createBottomTabNavigator();
 function MainTabs() {
   const [drwVisible, setDrwVisible] = useState(false);
   return (
     <Tab.Navigator
-      initialRouteName="Ana Sayfa"
+      initialRouteName="Profil"
       screenOptions={({ route }) => ({
         // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIndicatorStyle: { display: 'none' },
@@ -40,6 +39,7 @@ function MainTabs() {
         headerTitleAlign: 'center',
         headerTitleStyle: { color: 'white' },
         headerStyle: { backgroundColor: 'rgb(10, 13, 99)' },
+        animation: 'shift',
       })}
     >
       <Tab.Screen

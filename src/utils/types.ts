@@ -7,6 +7,7 @@ export type StackParamsList = {
   Login: undefined;
   Register: undefined;
   Details: { movieId: string };
+  ProfileSettings: undefined;
 };
 
 export type DetailsScreenNavigationProp = NativeStackNavigationProp<

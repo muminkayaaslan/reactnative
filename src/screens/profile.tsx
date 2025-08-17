@@ -1,21 +1,60 @@
+import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import Ionicons from '@react-native-vector-icons/ionicons';
-import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableHighlight } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackParamsList } from '../utils/types';
+import { useNavigation } from '@react-navigation/native';
 
-function Profile() {
+type navigationProp = NativeStackNavigationProp<StackParamsList>;
+function Settings() {
+  const settings = [
+    'Profile Settings',
+    'Account',
+    'Manage Comments',
+    'Edit Comments',
+    'Log Out',
+  ];
+  const icons = [
+    'people-circle-outline',
+    'person-circle-outline',
+    'color-wand-outline',
+    'create-outline',
+    'log-out-outline',
+  ];
+  const navigation = useNavigation<navigationProp>();
   return (
     <View style={styles.screen}>
       <View style={styles.header}>
-        <TouchableHighlight style={styles.menuBtn} onPress={() => {}}>
-          <Ionicons name={'menu-outline'} size={30} color={'white'} />
-        </TouchableHighlight>
+        <Text style={styles.hdTitle}>Settings</Text>
       </View>
-
       <View style={styles.container}>
-        <View style={styles.profileView}>
-          <Ionicons name={'person-outline'} color={'white'} size={100} />
-          <Text style={styles.usrnmSty}> Username</Text>
-        </View>
+        <FlatList
+          data={settings}
+          contentContainerStyle={{
+            flexGrow: 1,
+            justifyContent: 'center',
+          }}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              style={styles.item}
+              onPress={() => {
+                if (item === 'Log Out') {
+                  navigation.navigate('Splash');
+                }
+              }}
+            >
+              <Ionicons
+                style={styles.icon}
+                name={icons[index] as any}
+                size={20}
+                color={'white'}
+              />
+              <Text style={styles.itext}>{item}</Text>
+            </TouchableOpacity>
+          )}
+        />
       </View>
     </View>
   );
@@ -24,52 +63,43 @@ function Profile() {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: '#192FD4',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
+    backgroundColor: '#392a3bff',
+  },
+  icon: {
+    marginRight: 4,
+  },
+  item: {
+    width: '100%',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: 'blue',
+    borderWidth: 1,
+    borderRadius: 8,
+    flexDirection: 'row',
+    backgroundColor: 'rgba(47, 0, 255, 0.34)',
+    marginVertical: 10,
   },
   container: {
     flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: '100%',
-  },
-  text: {
-    color: 'white',
-  },
-  profileView: {
-    flex: 0.3,
-    width: '100%',
-    justifyContent: 'center',
     alignItems: 'center',
   },
-  usrnmSty: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
+  itext: {
     fontSize: 20,
-    marginVertical: 5,
-  },
-  menuBtn: {
-    margin: 17,
+    color: 'white',
+    textAlign: 'left',
   },
   header: {
-    backgroundColor: 'rgb(10, 13, 99)',
+    height: 70,
     width: '100%',
-    alignItems: 'flex-end',
-    borderRadius: 0,
+    backgroundColor: 'rgb(10, 13, 99)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  hdTitle: {
+    fontSize: 25,
+    color: 'white',
   },
 });
 
-export default Profile;
-
-/*
-
-buraya özel topbar eklenip menu butonu ile birlikte bu arkadaşı ekle
-      {visible && (
-        <ProfileDrawer
-          visible={drwVisible}
-          onClose={() => setDrwVisible(false)}
-        />
-      )}
-        */
+export default Settings;

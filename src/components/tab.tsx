@@ -11,7 +11,7 @@ function MainTabs() {
   const [drwVisible, setDrwVisible] = useState(false);
   return (
     <Tab.Navigator
-      initialRouteName="Profil"
+      initialRouteName="Ana Sayfa"
       screenOptions={({ route }) => ({
         // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIndicatorStyle: { display: 'none' },
@@ -22,13 +22,9 @@ function MainTabs() {
             return (
               <Ionicons name={'search-outline'} size={size} color={color} />
             );
-          } else if (route.name === 'Profil') {
+          } else if (route.name === 'Seçenekler') {
             return (
-              <Ionicons
-                name={'person-circle-outline'}
-                size={size}
-                color={color}
-              />
+              <Ionicons name={'water-outline'} size={size} color={color} />
             );
           }
         },
@@ -52,18 +48,10 @@ function MainTabs() {
       />
       <Tab.Screen name="Keşfet" component={Discovery} />
       <Tab.Screen
-        name="Profil"
+        name="Seçenekler"
         component={Profile}
         options={{
           headerShown: false,
-          headerRight: () => (
-            <TouchableOpacity
-              style={styles.menuIcn}
-              onPress={() => setDrwVisible(false)}
-            >
-              <Ionicons size={40} name={'menu'} color={'white'} />
-            </TouchableOpacity>
-          ),
         }}
       />
     </Tab.Navigator>

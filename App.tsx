@@ -8,7 +8,7 @@ import Detail from './src/screens/detailScreen';
 import { MovieProvider } from './src/constants/movieContext';
 import { StackParamsList } from './src/utils/types';
 import SplashScreen from './src/screens/splash';
-import { AppProvider, UserProvider } from '@realm/react';
+import ProfileSettings from './src/screens/profileSettings';
 const Stack = createNativeStackNavigator<StackParamsList>();
 
 function App() {
@@ -48,6 +48,7 @@ function App() {
             component={Detail}
             options={{ headerShown: false }}
           />
+          <Stack.Screen name="ProfileSettings" component={ProfileSettings} />
         </Stack.Navigator>
       </NavigationContainer>
     </MovieProvider>

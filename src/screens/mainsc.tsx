@@ -25,7 +25,7 @@ function Home() {
     return (
       <View style={styles.container}>
         {Platform.OS === 'android' ? (
-          <ActivityIndicator style={{ flex: 1 }} size="20%" color={'red'} />
+          <ActivityIndicator style={{ flex: 1 }} size="large" color={'red'} />
         ) : (
           <ActivityIndicator style={{ flex: 1 }} size="large" />
         )}
